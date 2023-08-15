@@ -28,10 +28,19 @@ namespace Service
            
                 var employees = _repository.Employee.GetAllEmployees(trackChanges);
 
-                var employeesDto = employees.Select(e => new EmployeeDto(e.Id, e.Name, e.Age, e.Position, e.CompanyId ));
+                var employeesDto = employees.Select(e => new EmployeeDto(e.Id, e.Name, e.Age, e.Position ));
                 return employeesDto;
             
         }
 
+        public EmployeeDto GetEmployee(Guid employeeId, bool trackChanges)
+        {
+            var employee = _repository.Employee.GetEmployee(employeeId, trackChanges);
+            //check if the employee is null
+            var employeeDto = _mapper.Map<EmployeeDto>(employee);
+
+            return employeeDto;
+
+        }
     }
 }

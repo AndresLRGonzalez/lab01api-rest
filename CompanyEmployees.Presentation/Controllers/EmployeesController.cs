@@ -20,11 +20,17 @@ namespace CompanyEmployees.Presentation.Controllers
         [HttpGet]
         public IActionResult GetEmployees()
         {
-            throw new Exception("Exception");
+            //throw new Exception("Exception");
             var employees =
             _service.EmployeeService.GetAllEmployees(trackChanges: false);
             return Ok(employees);
            
+        }
+        [HttpGet("{id:guid}")]
+        public IActionResult GetEmployee(Guid id)
+        {
+            var employee = _service.EmployeeService.GetEmployee(id, trackChanges: false);
+            return Ok(employee);
         }
     }
 }
