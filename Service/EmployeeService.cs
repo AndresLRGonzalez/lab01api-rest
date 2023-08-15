@@ -28,7 +28,7 @@ namespace Service
            
                 var employees = _repository.Employee.GetAllEmployees(trackChanges);
 
-                var employeesDto = employees.Select(e => new EmployeeDto(e.Id, e.Name, e.Age, e.Position ));
+                var employeesDto = employees.Select(e => new EmployeeDto(e.Id, e.Name, e.Age, e.Position, e.CompanyId ));
                 return employeesDto;
             
         }
